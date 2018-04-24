@@ -1,0 +1,64 @@
+## Sonata Page Bundle
+## Configuration: https://sonata-project.org/bundles/page/3-x/doc/reference/advanced_configuration.html
+sonata_page:
+    class:
+        page: App\Application\Sonata\PageBundle\Entity\Page # This is an optional value
+        snapshot: App\Application\Sonata\PageBundle\Entity\Snapshot
+        block: App\Application\Sonata\PageBundle\Entity\Block
+        site: App\Application\Sonata\PageBundle\Entity\Site
+    slugify_service:  sonata.core.slugify.cocur # old BC value is sonata.core.slugify.native
+    # Generates a snapshot when a page is saved (from the admin)
+    direct_publication: true # or %kernel.debug% if you want to publish in dev mode (but not in prod)
+    skip_redirection: true # Skip asking Editor to redirect
+    multisite:        host
+    use_streamed_response: true # set the value to false in debug mode or if the reverse proxy does not handle streamed response
+    ignore_route_patterns:
+        - ^(.*)admin(.*)        # ignore admin routes, ie route containing 'admin'
+        - ^_(.*)                # ignore symfony routes
+        - ^(.*)sonata_api(.*)   # ignore sonata api routes
+        - ^(.*)sonata_media(.*) # ignore sonata media routes
+        - ^(.*)sonata_news(.*)  # ignore sonata news routes
+        - ^(.*)sonata_cache(.*) # ignore sonata cache routes
+
+    ignore_routes:
+        - sonata_page_cache_esi
+        - sonata_page_cache_ssi
+        - sonata_page_js_sync_cache
+        - sonata_page_js_async_cache
+        - sonata_cache_esi
+        - sonata_cache_ssi
+        - sonata_cache_js_async
+        - sonata_cache_js_sync
+        - sonata_cache_apc
+
+    ignore_uri_patterns:
+        - ^/admin\/   # ignore admin route, ie route containing 'admin'
+        - ^/api\/     # ignore api route, ie route starting by '/api'
+
+    page_defaults:
+        homepage:
+            decorate: false # disable decoration for homepage, key - is a page route
+
+    default_template: default # template key from templates section, used as default for pages
+    templates:
+        default:
+            path: ':layout:page_layout.html.twig'
+            name: 'Page'
+            containers:
+                content_top:
+                    name: Top content
+                content:
+                    name: Main content
+                content_bottom:
+                    name: Bottom content
+            matrix:
+                layout: |
+                    TTTTTTTT
+                    CCCCCCCC
+                    CCCCCCCC
+                    BBBBBBBB
+
+                mapping:
+                    T: content_top
+                    C: content
+                    B: content_bottom

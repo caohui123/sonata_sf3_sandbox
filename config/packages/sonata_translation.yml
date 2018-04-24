@@ -1,0 +1,12 @@
+# Sonata Translation Bundle
+# Configuration:
+sonata_translation:
+    locales: [en, fr]
+    default_locale: fr
+    # here enable the types you need
+#    gedmo:
+#        enabled: true
+    knplabs:
+        enabled: true
+#    phpcr:
+#        enabled: true

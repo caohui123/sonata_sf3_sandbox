@@ -1,0 +1,24 @@
+# Sonata News Bundle
+# Configuration:
+sonata_news:
+    class:
+        post:       App\lication\Sonata\NewsBundle\Entity\Post
+        comment:    App\Application\Sonata\NewsBundle\Entity\Comment
+        tag:        App\Application\Sonata\ClassificationBundle\Entity\Tag
+        collection: App\Application\Sonata\ClassificationBundle\Entity\Collection
+        user:       App\Application\Sonata\UserBundle\Entity\User
+        media:      App\Application\Sonata\MediaBundle\Entity\Media
+
+    title:        sonata_seo.page.title
+    link:         ''
+    description:  sonata_seo.page.metas.description
+    salt:         framework.secret
+
+    permalink_generator: sonata.news.permalink.date # sonata.news.permalink.collection
+
+    comment:
+        notification:
+            emails:
+                - '%env(SONATA_NEWS_COMMENT_EMAIL_FROM)%'
+            from:     '%env(SONATA_NEWS_COMMENT_EMAIL_FROM)%'
+            template: '@SonataNews/Mail/comment_notification.txt.twig'

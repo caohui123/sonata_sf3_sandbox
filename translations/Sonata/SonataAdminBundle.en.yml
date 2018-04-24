@@ -1,0 +1,12 @@
+# Sonata Admin Bundle Translation
+sonata_admin:
+    group:
+        classification: Classification
+        extra: Extra
+        media: Media Library
+        notification: Notification
+        page: Page & Blocs
+        users: Users
+
+    group_item:
+        api_doc: Nelmio API Doc

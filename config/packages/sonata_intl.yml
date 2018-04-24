@@ -1,0 +1,8 @@
+# Sonata Intl Bundle
+# Configuration: https://sonata-project.org/bundles/intl/2-x/doc/reference/configuration.html
+sonata_intl:
+    timezone:
+        default: Europe/Paris
+        locales:
+            fr:    Europe/Paris
+            en_GB: Europe/London

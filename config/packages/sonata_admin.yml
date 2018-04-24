@@ -1,0 +1,106 @@
+# Sonata Admin Bundle
+# Configuration: https://sonata-project.org/bundles/admin/3-x/doc/reference/configuration.html
+sonata_admin:
+    title:      'Sandbox Sonata Symfony 3'
+
+    dashboard:
+        groups:
+            sonata.admin.group.pages:
+                label:           'sonata_admin.group.page'
+                icon:            '<i class="fa fa-sitemap"></i>'
+                items:
+                    - sonata.page.admin.page
+                    - sonata.page.admin.shared_block
+                    - sonata.page.admin.snapshot
+                    - sonata.page.admin.site
+
+            sonata.admin.group.notification:
+                label:           'sonata_admin.group.notification'
+                icon:            '<i class="fa fa-bell"></i>'
+                items:
+                    - sonata.notification.admin.message
+
+            sonata.admin.group.classification:
+                label:           'sonata_admin.group.classification'
+                icon:            '<i class="fa fa-sliders"></i>'
+                items:
+                    - sonata.classification.admin.category
+                    - sonata.classification.admin.tag
+                    - sonata.classification.admin.collection
+                    - sonata.classification.admin.context
+
+            sonata.admin.group.medias:
+                label:           'sonata_admin.group.media'
+                icon:            '<i class="fa fa-film"></i>'
+                items:
+                    - sonata.media.admin.media
+                    - sonata.media.admin.gallery
+
+            sonata.admin.group.users:
+                label:           'sonata_admin.group.users'
+                icon:            '<i class="fa fa-users"></i>'
+                items:
+                    - sonata.user.admin.user
+                    - sonata.user.admin.group
+
+            sonata.admin.group.extra:
+                label:           'sonata_admin.group.extra'
+                icon:            '<i class="fa fa-cubes"></i>'
+                items:
+                    - { route: 'app.swagger_ui', label: 'sonata_admin.group_item.api_doc'}
+        blocks:
+
+            -
+                class:    col-lg-3 col-xs-6
+                position: top
+                type:     sonata.admin.block.stats
+                settings:
+                    code:  sonata.notification.admin.message
+                    icon:  fa-bell
+                    text:  'sonata_notification'
+                    color: bg-blue
+
+            -
+                class:    col-lg-3 col-xs-6
+                position: top
+                type:     sonata.admin.block.stats
+                settings:
+                    code:  sonata.classification.admin.category
+                    icon:  fa-sliders
+                    text:  'sonata_classification'
+                    color: bg-red
+
+            -
+                class:    col-lg-3 col-xs-6
+                position: top
+                type:     sonata.admin.block.stats
+                settings:
+                    code:  sonata.media.admin.media
+                    icon:  fa-film
+                    text:  'sonata_media'
+                    color: bg-green
+
+            -
+                class:    col-lg-3 col-xs-6
+                position: top
+                type:     sonata.admin.block.stats
+                settings:
+                    code: sonata.user.admin.user
+                    icon: fa-users
+                    text: 'sonata_user'
+                    color: bg-yellow
+
+            -
+                class: col-lg-6 col-xs-12
+                position: right
+                type: sonata.timeline.block.timeline
+                settings:
+                    context: GLOBAL
+                    max_per_page: 25
+
+    assets:
+        extra_javascripts:
+            - bundles/sonatapage/sonata-page.back.min.js
+        extra_stylesheets:
+            - bundles/sonatatranslation/css/sonata-translation.css
+            - bundles/sonatapage/sonata-page.back.min.css

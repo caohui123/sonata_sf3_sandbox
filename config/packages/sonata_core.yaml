@@ -1,0 +1,6 @@
+# Sonata Core Bundle
+# Configuration: https://sonata-project.org/bundles/core/3-x/doc/reference/installation.html#configuration
+sonata_core:
+    form:
+        mapping:
+            enabled: false

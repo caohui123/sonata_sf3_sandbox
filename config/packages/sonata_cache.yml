@@ -1,0 +1,11 @@
+# Sonata Cache Bundle
+# Configuration: https://sonata-project.org/bundles/cache/2-x/doc/reference/installation.html
+sonata_cache:
+    caches:
+        symfony:
+            token: s3cur3           # Token used to clear the related cache
+            servers:
+                - { domain: '%sonata_cache.symfony.port%', ip: '%sonata_cache.symfony.port%', port: '%sonata_cache.symfony.port%' }
+            timeout:
+                RCV: { sec: 2, usec: 0 }
+                SND: { sec: 2, usec: 0 }

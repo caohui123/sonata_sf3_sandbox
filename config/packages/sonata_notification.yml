@@ -1,0 +1,22 @@
+# Sonata Notification Bundle
+# Configuration: https://sonata-project.org/bundles/notification/3-x/doc/reference/advanced_configuration.html
+sonata_notification:
+    admin:
+        enabled: true # Enable/Disable admin for the notification bundle.
+    class:
+        message: App\Application\Sonata\NotificationBundle\Entity\Message
+
+#    backend: sonata.notification.backend.runtime # Direct call, no benefit but useful for testing purpose
+    #backend: sonata.notification.backend.postpone # Post-pone the messages to be dispatched on kernel.terminate
+    backend: sonata.notification.backend.doctrine # Use database to store message, require a background task to be started and supervised, decent starting point for a small amount of async task
+    #backend: sonata.notification.backend.rabbitmq # Use the RabbitMQ engine to handle messaging, best performance
+
+    backends:
+        doctrine:
+            max_age:      86400     # max age in second
+            pause:        500000    # delay in microseconds
+            states:                 # raising errors level
+                in_progress: 10
+                error:       20
+                open:        100
+                done:        10000
